@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/jquery-ui.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="./css/jquery-ui.css">
+<link rel="stylesheet" href="./css/style.css" />
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+<body>
+	<div id="main">
+        <button id="myBut">Ajax获取数据</button>
+        <div id="container"></div>
+    </div>
+
+<script type="text/javascript">
+
+
+    $(function() {
+        $('#myBut').click(function() {
+            $.post("/booking-demo/api/JqueryAjaxServlet", {
+                age : 18,
+                name : "zhang"
+            }, function(data, textStatus) {
+                var container = $('#container');
+                var resultData = $.parseJSON(data);
+                var age = resultData.age;
+                var name = resultData.name;
+                container.html("name:" + name + "," + "age:" + age);
+            });
+        });
+    });
+</script>
+</body>
+</html>

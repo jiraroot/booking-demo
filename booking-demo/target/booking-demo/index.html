@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Booking System</title>
+
+<script src="./js/jquery-1.11.1.min.js"></script>
+<script src="./js/jquery-ui.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="./css/jquery-ui.css">
+<link rel="stylesheet" href="./css/style.css" />
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+
+<script>
+	 function post() {
+		var user_form =$("#user").serialize();
+		console.log("user_form: ", user_form);
+			
+		/*	$.post('/booking-demo/api/jobs', {
+					req_data : $("#user").serialize()
+				}, function(data,textStatus) {
+					console.log(textStatus);
+					console.log("return:",data);
+					$('ul#res').empty();
+					$('ul#res').append('<li>' + data + '</li>');
+				}, "json"); */
+				$.post("/booking-demo/api/jobs",  $("#user").serialize(), function(data,textStatus) {
+					console.log(textStatus);
+					console.log("return:",data);
+					$('ul#res').empty();
+					$('ul#res').append('<li>' + data + '</li>');
+				}, "json");
+				
+		}	
+			
+ //   });
+	//	$('a').click (post);	 
+	
+
+	
+/* $(document).ready(function() {
+	function post(event) {
+
+    event.stopPropagation();
+		var user_form =$("#user").serialize();
+		console.log("user_form: " + user_form);
+
+			$.post('/booking-demo/api/jobs', {
+					req_data : $("#user").serialize()
+				}, function(data,textStatus) {
+					console.log(textStatus);
+					console.log("return:",data);
+					$('ul#res').empty();
+					$('ul#res').append('<li>' + data + '</li>');
+				}, "json");
+		}
+		$('a').click (post);
+    }); 
+    */
+	
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h4 class="text-muted">Booking demo</h4>
+		</div>
+		<div>
+			<form id="user" name="user">
+				Username：<input type="text" name="username" id="username"><br>
+				Password：<input type="password" name="pwd" id="pwd"><br>
+				<a href="javascript:post()"> Submit</a>
+			</form>
+			<ul id="res"></ul>
+		</div>
+	</div>
+</body>
+</html>
