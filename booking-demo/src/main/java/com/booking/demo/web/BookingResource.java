@@ -37,25 +37,6 @@ public class BookingResource {
 		System.out.println("result: " + result);
 		byte[] buff=new byte[]{};  
 		FileOutputStream out = null;
-/*Example		
-//		 try   
-//	        {  
-//	            String aa="你好123";  
-//	            buff=aa.getBytes();  
-//	            FileOutputStream out=new FileOutputStream(outputURL, true);  
-//	            out.write(buff,0,buff.length);  
-//	              
-//	        }   
-//	        catch (FileNotFoundException e)   
-//	        {  
-//	            e.printStackTrace();  
-//	        }  
-//	        catch (IOException e)   
-//	        {  
-//	            e.printStackTrace();  
-//	        }  
- * 
- */
 		try   
         {   
             buff=result.getBytes();  
@@ -74,13 +55,9 @@ public class BookingResource {
             } catch (IOException e) {     
                 e.printStackTrace();     
             }   
-        }   
-	
-			
-	
-        
-		
-		return result;  
+        }   	
+		//return result;  
+		return "{ \"result\": \"" + result + "\" }";
 		//    return Response.status(200).header("Content-Type", MediaType.APPLICATION_JSON).entity(str).build();
 	}
 
