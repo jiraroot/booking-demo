@@ -28,6 +28,7 @@ public class BookingResource {
 	@Produces({MediaType.APPLICATION_JSON})
 	public String addJob(@FormParam("username") String username,@FormParam("pwd") String pwd) throws IOException 	
 	{	
+		String outputURL = "/Users/yiniwang/git/booking-demo/booking-demo/output/result.txt";
 		System.out.println("username:");
 		System.out.println(username);
 		System.out.println("pwd:");
@@ -36,10 +37,29 @@ public class BookingResource {
 		System.out.println("result: " + result);
 		byte[] buff=new byte[]{};  
 		FileOutputStream out = null;
+/*Example		
+//		 try   
+//	        {  
+//	            String aa="你好123";  
+//	            buff=aa.getBytes();  
+//	            FileOutputStream out=new FileOutputStream(outputURL, true);  
+//	            out.write(buff,0,buff.length);  
+//	              
+//	        }   
+//	        catch (FileNotFoundException e)   
+//	        {  
+//	            e.printStackTrace();  
+//	        }  
+//	        catch (IOException e)   
+//	        {  
+//	            e.printStackTrace();  
+//	        }  
+ * 
+ */
 		try   
         {   
             buff=result.getBytes();  
-            out=new FileOutputStream("/WorkSpace/Neusoft/practice/booking-demo/output/result.txt", true);  
+            out=new FileOutputStream(outputURL, true);  
             out.write(buff,0,buff.length); 
             out.write("\r\n".getBytes());// 写入一个换行  
               

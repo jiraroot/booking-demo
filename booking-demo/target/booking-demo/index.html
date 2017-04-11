@@ -28,8 +28,9 @@
 					$('ul#res').empty();
 					$('ul#res').append('<li>' + data + '</li>');
 				}, "json"); */
-				$.post("/booking-demo/api/jobs",  $("#user").serialize(), function(data,textStatus) {
-					console.log(textStatus);
+				$.post("/booking-demo/api/jobs",  $("#user").serialize(), function(data) {
+					//console.log(textStatus);
+					 console.log("hello!");
 					console.log("return:",data);
 					$('ul#res').empty();
 					$('ul#res').append('<li>' + data + '</li>');
