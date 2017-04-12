@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Booking System</title>
+
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/jquery-ui.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="./css/jquery-ui.css">
+<link rel="stylesheet" href="./css/style.css" />
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+
+<script>
+
+
+
+  $(document).ready(function() {
+    function post() {
+      var user_form =$("#user").serialize();
+      console.log("user_form: ", user_form);
+
+      $.ajax({
+        type:'POST',
+        url:"/booking-demo/api/jobs",
+        data: $("#user").serialize(),
+        dataType:"json",
+        error:function (xhr, status, errorThrown) {
+            console.log(xhr); //could be alert if you don't use the dev tools
+        },
+        success:function(data){
+          console.log("hello!");
+          console.log("return:",data);
+          $('ul#res').empty();
+        //  $('ul#res').append('<li>' + data + '</li>');
+        $('ul#res').append('<li>' + data.result + '</li>');
+        }
+
+      });
+
+  	}
+
+    $("a").click(function(event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        post();
+    });
+  }
+)
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h4 class="text-muted">Booking demo</h4>
+		</div>
+		<div>
+			<form id="user" name="user">
+				Username：<input type="text" name="username" id="username">
+
+				Password：<input type="password" name="pwd" id="pwd">
+
+				<a href=" "> Submit</a >
+			</form>
+			<ul id="res"></ul>
+		</div>
+	</div>
+</body>
+</html>
